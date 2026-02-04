@@ -1,0 +1,38 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+<form method="POST" action="{% url 'add_todo' %}" class="todo-form">
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="Enter a new task..." required>
+    <button type="submit">Add Todo</button>
+</form>
+
+<div class="stats">
+    <div class="stat-card">
+        <h3>Total</h3>
+        <p>{{ todos|length }}</p>
+    </div>
+</div>
+
+<div class="todo-list">
+{% for todo in todos %}
+    <div class="todo-card {% if todo.completed %}completed{% endif %}">
+        <div>
+            <h4>{{ todo.title }}</h4>
+            <small>{{ todo.created_at|date:"d M Y, H:i" }}</small>
+        </div>
+
+        <div class="actions">
+            {% if not todo.completed %}
+                <a href="{% url 'complete_todo' todo.id %}" class="btn success">✔</a>
+            {% endif %}
+            <a href="{% url 'delete_todo' todo.id %}" class="btn danger">✖</a>
+        </div>
+    </div>
+{% empty %}
+    <p class="empty">No todos found. Add your first task 🚀</p>
+{% endfor %}
+</div>
+
+{% endblock %}

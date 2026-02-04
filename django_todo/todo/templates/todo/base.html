@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #f4f6f9;
+            color: #333;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: #1f2937;
+            color: #fff;
+            padding: 15px 30px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #9ca3af;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        /* FORM */
+        .todo-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .todo-form input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .todo-form button {
+            padding: 10px 16px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* STATS */
+        .stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .pending {
+            background: #fef3c7;
+        }
+
+        /* TODO CARDS */
+        .todo-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .todo-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+
+        .todo-card.completed {
+            opacity: 0.6;
+            text-decoration: line-through;
+        }
+
+        /* BUTTONS */
+        .btn {
+            padding: 6px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .success {
+            background: #22c55e;
+            color: white;
+        }
+
+        .danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        /* EMPTY */
+        .empty {
+            text-align: center;
+            color: #777;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 15px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .todo-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="navbar">
+    <h1>📝 Todo Dashboard</h1>
+    <span class="subtitle">Campus Machine Round</span>
+</header>
+
+<main class="container">
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+    <p>Built with Django | UIT RGPV</p>
+</footer>
+
+</body>
+</html>
